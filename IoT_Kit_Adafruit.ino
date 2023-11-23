@@ -8,8 +8,8 @@
 #include <DHT.h>
 #include <mDash.h>
 
-#define MDASH_APP_NAME "MinimalApp"
-#define DEVICE_PASSWORD "mDq99bb7Me99HfDN99X4QCb90w"
+#define MDASH_APP_NAME "IoT-App"
+#define DEVICE_PASSWORD "2SI90dO8iyTBKqoDVpOrZVw" //isi dengan password pada mDash
 #define SS_PIN  5  // ESP32 pin GPIO5 
 #define RST_PIN 0 // ESP32 pin GPIO27
 #define Relay 17
@@ -31,7 +31,7 @@ const char* password = "12345678";
 const char* mqttServer = "io.adafruit.com";
 const int mqttPort = 1883;
 const char* mqttUser = "Robotic_UBL";
-const char* mqttPassword = "aio_qQNO67MFsfBskZIYpOaiwHL9WPpq";
+const char* mqttPassword = "aio_VMhZ38cJ4tldmSTF6mT914QFHa6y";
 const char* mqttTopic1 = "Robotic_UBL/feeds/relay";
 const char* mqttTopic2 = "Robotic_UBL/feeds/lamp";
 const char* mqttTopic3 = "Robotic_UBL/feeds/motion";
@@ -79,7 +79,7 @@ int val_flame = 0;
 int val_ir = 0;
 int val_motion = 0;
 
-byte keyTagUID[4] = {0xE3, 0xF7, 0xE4, 0xFA};
+byte keyTagUID[4] = {0x43, 0x90, 0x09, 0xFB};
 
 
 void wifi_connect() {
@@ -157,7 +157,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         digitalWrite(LED, LOW);
     }
 
-    else if (response == "OFF"){
+    else if (response == "ON"){
         Serial.println("LAMP ON");
         digitalWrite(LED, HIGH);
     }
@@ -291,7 +291,7 @@ void kirimSensor () {
 }
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   SPI.begin(); // init SPI bus
   wifi_connect();
   mqtt_setup();
@@ -306,7 +306,6 @@ void setup() {
   pinMode(buzzer, OUTPUT);
   pinMode(LED, OUTPUT);
   pinMode(flame, INPUT);
-  Serial.begin(115200);
 }
 
 void loop() {
