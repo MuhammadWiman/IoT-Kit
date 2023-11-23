@@ -8,7 +8,7 @@
 #include <DHT.h>
 #include <mDash.h>
 
-#define MDASH_APP_NAME "IoT-App"
+#define MDASH_APP_NAME "MinimalApp"
 #define DEVICE_PASSWORD "2SI90dO8iyTBKqoDVpOrZVw" //isi dengan password pada mDash
 #define SS_PIN  5  // ESP32 pin GPIO5 
 #define RST_PIN 0 // ESP32 pin GPIO27
